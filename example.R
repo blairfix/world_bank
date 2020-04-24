@@ -14,7 +14,6 @@ source("3_retrieve_series.R")
 # read in data
 wd = file.path(dir, "your_data")
 setwd(wd)
-
 wdi_data = fread("wdi_select.csv")
 wdi_data = na.omit(wdi_data)
 
@@ -25,11 +24,10 @@ wdi_data$label = wdi_data$country.code
 keep = seq(1, nrow(wdi_data), length.out = 20) %>% round()
 wdi_data$label[-keep] = ""
 
-unique(wdi_data$label)
-
+# reorder for plot
 wdi_data = wdi_data[order(country, year)]
 
-
+# make ggplot
 energy_carbon_plot = ggplot( data = wdi_data ) +
   geom_path(aes(x = EG.USE.PCAP.KG.OE, y = EN.ATM.CO2E.PC, col = country), 
             size = 0.5, alpha = 0.7) +
