@@ -1,26 +1,6 @@
 # world_bank
 
-`world_bank` is an R script to download and format data from the World Bank. It downloads the entire World Bank database and formats the data series you desire in a way that is convenient for cross-country analysis.
+Here are some scripts that help me work with World Bank data. You can download the whole World Bank database [here](http://databank.worldbank.org/data/download/WDI_csv.zip). The problem with it, though, is that it is in a 'wide' format, which I find difficult to work with. These scripts  download the whole database, select the data that you want, and convert it to long format.
 
-### How to use `world_bank`
-
-**Step 1.** Source `1_download.R`. This will download the World Bank dataset and put it in a folder called `world_bank_dataset`. 
-
-**Step 2.** Inside the `metadata` folder you will find a csv file called `wdi_metadata.csv`. This file contains codes and descriptions for every World Bank series. Find the series you want, and copy the codes into the file `2_data_series_to_get.csv`. (See examples included in the file.)
-
-**Step 3.** Source `3_retrieve_series.R`. This will retrieve the series you selected and output the data in the `your_data` folder under the filename `wdi_select.csv`.
-
-**Step 4.** Analyze the data as you see fit.
-
-
-### Example
-
-`world_bank` is designed to make it easy to plot cross-country data using [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html). In `example.R`, you'll find code to download and format the data to produce the following plot. It shows how carbon emissions per capita grow with energy use. Each line is the path through time of a country.
-
-![Carbon emissions vs energy use per person](https://economicsfromthetopdown.files.wordpress.com/2020/04/energy_carbon_plot.png)
-
-
-
-
-
+Here's how to use them. In the `get_series.csv` file, enter the codes for the data series that you want to get. (I've included a few series for examples.) Then run the `runall.sh` shell script. The result will be a file called `wdi.csv` containing the data that you want.
 
